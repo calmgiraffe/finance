@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="pass1" name="password" onkeyup="check();" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="pass2" name="passwordConfirm" onkeyup="check();" placeholder="Confirm password" type="password">
+        </div>
+        <input type='submit' id='register' name='Confirmation' class="btn btn-primary" value="Confirmation"> <br> <br>
+        <span hidden id='notification' style='color:red; padding: 10px'>Passwords do not match.</span>
+    </form>
+
+    <script>
+        /*
+        var check = function() {
+            pass = document.getElementById("pass1")
+            passConfirm = document.getElementById("pass2")
+            notification = document.getElementById("notification")
+            register = document.getElementById("register")
+
+            if (pass.value && passConfirm.value) {
+                if (pass.value != passConfirm.value) {
+                    notification.hidden = false;
+                    register.disabled = true;
+                }
+                else {
+                    notification.hidden = true;
+                    register.disabled = false;
+                }
+            }
+            else {
+                register.disabled = true;
+            }
+        }
+        */
+    </script>
+{% endblock %}

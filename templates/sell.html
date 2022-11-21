@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form id='sellForm' action="/sell" method="post">
+        
+        <div class='form-group'>
+            <select name='symbol' class="form-control" aria-label="Default select example">
+              <option selected='selected' disabled>Symbol</option>
+              {% for symbol in symbols %}
+              <option value='{{ symbol.symbol }}'>{{ symbol.symbol }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" name='quantity' placeholder="Quantity" type="number" min='1'>
+        </div>
+        <input type='submit' name='sell' class="btn btn-primary" value="Sell" form='sellForm'>
+    </form>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-left" scope="col">Symbol</th>
+          <th class='text-left' scope="col">Name</th>
+          <th class='text-right' scope="col">Shares</th>
+          <th class='text-right' scope="col">Current Price</th>
+          <th class='text-right' scope="col">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trade in trades %}
+        <tr>
+          <td class="text-left">{{ trade.symbol }}</td>
+          <td class="text-left">{{ trade.name }}</td>
+          <td class="text-right">{{ trade.totalQuantity }}</td>
+          <td class="text-right">{{ "$%.2f"|format(trade.currentPrice) }}</td>
+          <td class="text-right">{{ "$%.2f"|format(trade.totalPrice) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <td style='font-weight: bold' class='border-0 text-end text-right' colspan='4'>TOTAL</td>
+        <td class='border-0 text-end text-right'>{{ "$%.2f"|format(cash.cash + total) }}</td>
+      </tfoot>
+      <tfoot>
+        <td style='font-weight: bold' class='border-0 text-end text-right' colspan='4'>Cash</td>
+        <td class='border-0 text-end text-right'>{{ "$%.2f"|format(cash.cash) }}</td>
+      </tfoot>
+      
+     </table>
+{% endblock %}

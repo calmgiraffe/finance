@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-left" scope="col">Symbol</th>
+          <th class='text-left' scope="col">Name</th>
+          <th class='text-right' scope="col">Shares</th>
+          <th class='text-right' scope="col">Price</th>
+          <th class='text-right' scope="col">Transacted</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trade in trades %}
+        <tr>
+          <td class="text-left">{{ trade.symbol }}</td>
+          <td class="text-left">{{ trade.name }}</td>
+          <td class="text-right">{{ trade.quantity }}</td>
+          <td class="text-right">{{ "$%.2f"|format(trade.price) }}</td>
+          <td class="text-right">{{ trade.time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+     </table>
+{% endblock %}
